@@ -5,11 +5,22 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal "0", ShortCode.encode(0)
     end
 
-  test "encode 1" do
-    assert_equal "1", ShortCode.encode(1)
+
+
+
+  test "decode '1'" do
+    assert_equal 1, ShortCode.decode("1")
   end
 
-  test "encode 1024" do
-    assert_equal "gw", ShortCode.encode(1024)
+  test "decode 'gw'" do
+    assert_equal 1024, ShortCode.decode("gw")
+    end
+
+  test "decode '10'" do
+    assert_equal 62, ShortCode.decode("10")
+  end
+
+  test "decode '4c91'" do
+    assert_equal 999_999, ShortCode.decode("4c91")
   end
 end
